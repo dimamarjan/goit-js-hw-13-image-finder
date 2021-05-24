@@ -1,3 +1,4 @@
+// STYLE
 import './sass/main.scss';
 
 //JS
