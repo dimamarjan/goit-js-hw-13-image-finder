@@ -4,11 +4,10 @@ import galleryListTPL from '../templates/image-list.hbs';
 
 const galleryList = document.querySelector('body');
 
-console.log(getPhotos('red rose'));
-
-const foo = async () => {
+const buildGalleryList = userData => {
   try {
-    await getPhotos('red rose').then(result =>
+    console.log(userData); /// must del
+    getPhotos(userData).then(result =>
       galleryList.insertAdjacentHTML('beforeend', galleryListTPL(result.hits)),
     );
   } catch {
@@ -16,4 +15,4 @@ const foo = async () => {
   }
 };
 
-foo();
+export default buildGalleryList;
