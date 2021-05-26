@@ -1,8 +1,5 @@
 // STYLE
-import './css/main.css';
-// import './css/_gallery.scss';
-// import './css/_search-section.scss';
-// import './css/_input-section.scss';
+import './css/main.scss'
 
 //JS
 import './js/get-photos';
