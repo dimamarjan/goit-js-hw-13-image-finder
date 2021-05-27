@@ -1,33 +1,31 @@
-<div class='gallery-section'>
-  <ul class='gallery'>
-    {{#each this}}
-      <li class='gallery-item'>
-        <div class='gallery-image-container'>
-          <img class='gallery-item-image' src={{webformatURL}} alt='{{tags}}' />
-        </div>
-        <div class='gallery-item-container'>
-          <ul class='gallery-item-options'>
-            <li class='gallery-item-text'>
-              <span class='material-icons'>
-                download
-              </span>
-              {{downloads}}
-            </li>
-            <li class='gallery-item-text'>
-              <span class='material-icons'>
-                thumb_up_off_alt
-              </span>
-              {{likes}}
-            </li>
-            <li class='gallery-item-text'>
-              <span class='material-icons'>
-                visibility
-              </span>
-              {{views}}
-            </li>
-          </ul>
-        </div>
-      </li>
-    {{/each}}
-  </ul>
-</div>
+<ul class='gallery'>
+  {{#each this}}
+    <li class='gallery-item'>
+      <div class='gallery-image-container'>
+        <img class='gallery-item-image' src={{webformatURL}} alt='{{tags}}' />
+      </div>
+      <div class='gallery-item-container'>
+        <ul class='gallery-item-options'>
+          <li class='gallery-item-text'>
+            <span class='material-icons'>
+              download
+            </span>
+            {{downloads}}
+          </li>
+          <li class='gallery-item-text'>
+            <span class='material-icons'>
+              thumb_up_off_alt
+            </span>
+            {{likes}}
+          </li>
+          <li class='gallery-item-text'>
+            <span class='material-icons'>
+              visibility
+            </span>
+            {{views}}
+          </li>
+        </ul>
+      </div>
+    </li>
+  {{/each}}
+</ul>

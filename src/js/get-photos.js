@@ -2,17 +2,22 @@ import getPhotos from './apiService';
 
 import galleryListTPL from '../templates/image-list.hbs';
 
-const galleryList = document.querySelector('body');
+const galleryList = document.querySelector('.gallery-section');
 
-const buildGalleryList = userData => {
+export default function buildGalleryList(userData, pageNumber) {
   try {
-    console.log(userData); /// must del
-    getPhotos(userData).then(result =>
-      galleryList.insertAdjacentHTML('beforeend', galleryListTPL(result.hits)),
-    );
+    return getPhotos(userData, pageNumber).then(result => {
+      galleryList.insertAdjacentHTML('beforeend', galleryListTPL(result.promiseData.hits));
+      setTimeout(
+        galleryList.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end',
+        }),
+        1000,
+      );
+      return result.promiseLength;
+    });
   } catch {
     err => console.log(err);
   }
-};
-
-export default buildGalleryList;
+}

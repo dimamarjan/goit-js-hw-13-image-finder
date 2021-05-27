@@ -1,25 +1,32 @@
-import buildeGallery from './get-photos';
+import buildGallery from './get-photos';
+import loadMoreImagesTPL from '../templates/load-more.hbs';
 import debounce from 'lodash.debounce';
+import loadMoreImages from './load-more-images';
 
 const inputField = document.querySelector('input.input-section');
+const galleryList = document.querySelector('.gallery-section');
+const loadSection = document.querySelector('.load-section');
+
+const clearSections = () => {
+  galleryList.innerHTML = '';
+  loadSection.innerHTML = '';
+};
 
 inputField.addEventListener(
   'input',
   debounce(() => {
     const texFromInput = inputField.value;
-    console.log(texFromInput.length);
     if (texFromInput.length === 0) {
-      document.querySelector('.gallery-section').remove();
+      clearSections();
     }
-
     if (texFromInput.length > 0) {
-      if (document.querySelector('.gallery-section')) {
-        console.log('true');
-      }
-
-      buildeGallery(texFromInput);
+      clearSections();
+      buildGallery(texFromInput).then(result => {
+        if (result === 12) {
+          loadSection.insertAdjacentHTML('beforeend', loadMoreImagesTPL());
+          loadMoreImages();
+        }
+      });
     }
   }, 1000),
 );
-
-// buildeGallery('yelow');
