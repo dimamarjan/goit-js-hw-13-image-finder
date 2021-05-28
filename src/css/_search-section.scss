@@ -1,10 +1,18 @@
 .search-section {
   display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  margin-bottom: 20px;
   width: 1200px;
-  padding: 30px;
 }
 
-.search-form {
-  display: block;
-  margin: 0 auto;
+.input-section {
+  border-radius: 30px;
+  padding: 15px;
+  width: 360px;
+  text-align: center;
+
+  &:focus {
+    outline: 1px solid rgb(240, 240, 240);
+  }
 }

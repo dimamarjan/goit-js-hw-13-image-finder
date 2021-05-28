@@ -1,0 +1,14 @@
+.stats {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+
+  &-item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
+  }
+}

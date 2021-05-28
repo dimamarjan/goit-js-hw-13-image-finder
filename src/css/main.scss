@@ -1,5 +1,9 @@
 @import './body';
-@import './input-section';
 @import './gallery';
 @import './search-section';
 @import './load-more-section';
+@import '@pnotify/core/dist/BrightTheme.css';
+@import '@pnotify/core/dist/Material.css';
+@import './alert-message';
+@import 'basiclightbox/dist/basicLightbox.min.css';
+@import './large-image-modal';

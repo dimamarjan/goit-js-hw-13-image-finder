@@ -1,8 +1,9 @@
 const API_KEY = '21769290-e5df4cf4bec88d52ade7ba6e7';
+const BASE_URL = 'https://pixabay.com/api/';
 
-export default async function getPhotos(userData, pageNumber = 1) {
+export async function getPhotos(userData, pageNumber = 1) {
   const result = await fetch(
-    `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${encodeURIComponent(
+    `${BASE_URL}?image_type=photo&orientation=horizontal&q=${encodeURIComponent(
       userData,
     )}&page=${pageNumber}&per_page=12&key=${API_KEY}`,
   );
@@ -14,4 +15,10 @@ export default async function getPhotos(userData, pageNumber = 1) {
   arrResponse.promiseLength = dataResponse.hits.length;
 
   return arrResponse;
+}
+
+export async function getLargePhoto(imageId) {
+  const resultID = await fetch(`${BASE_URL}?id=${imageId}&key=${API_KEY}`);
+  const imageResponse = await resultID.json();
+  return imageResponse;
 }
