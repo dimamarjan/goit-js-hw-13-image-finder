@@ -39,7 +39,7 @@ inputField.addEventListener(
         })
         .catch(err => console.log(err));
     }
-  }, 1000),
+  }, 500),
 );
 
 bodySection.addEventListener('click', eve => {
