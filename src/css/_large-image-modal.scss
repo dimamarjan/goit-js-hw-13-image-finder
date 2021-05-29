@@ -1,7 +1,11 @@
+div.photo-card > img {
+  height: 650px;
+}
+
 .stats {
   position: absolute;
   bottom: 30px;
-  left: 30px;
+  left: 80px;
   display: flex;
   justify-content: center;
   color: #fff;

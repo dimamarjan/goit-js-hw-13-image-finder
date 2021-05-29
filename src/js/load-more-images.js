@@ -1,4 +1,4 @@
-import buildGallery from './get-photos';
+import getPhotos from './get-photos';
 
 let countPagination = 1;
 
@@ -7,6 +7,6 @@ export default function loadMoreImages() {
   loadContainer.addEventListener('click', () => {
     const inputSection = document.querySelector('.input-section');
     countPagination += 1;
-    buildGallery(inputSection.value, countPagination);
+    getPhotos(inputSection.value, countPagination);
   });
 }

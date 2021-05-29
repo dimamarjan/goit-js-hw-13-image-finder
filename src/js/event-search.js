@@ -1,13 +1,15 @@
-import buildGallery from './get-photos';
-import loadMoreImagesTPL from '../templates/load-more.hbs';
+import getPhotos from './get-photos';
 import debounce from 'lodash.debounce';
 import loadMoreImages from './load-more-images';
 import alertMessage from './alert-message';
-import openImageCard from './get-image-card';
+import getImageCard from './get-image-card';
+
+import loadMoreImagesTPL from '../templates/load-more.hbs';
 
 const inputField = document.querySelector('input.input-section');
 const galleryList = document.querySelector('.gallery-section');
 const loadSection = document.querySelector('.load-section');
+const bodySection = document.querySelector('body');
 
 const clearSections = () => {
   galleryList.innerHTML = '';
@@ -24,7 +26,7 @@ inputField.addEventListener(
     }
     if (texFromInput.length > 0) {
       clearSections();
-      buildGallery(texFromInput)
+      getPhotos(texFromInput)
         .then(result => {
           if (result.promiseLength === 0) {
             alertMessage();
@@ -32,7 +34,6 @@ inputField.addEventListener(
           }
           if (result.promiseLength === 12) {
             loadSection.insertAdjacentHTML('beforeend', loadMoreImagesTPL());
-            openImageCard();
             loadMoreImages();
           }
         })
@@ -40,3 +41,12 @@ inputField.addEventListener(
     }
   }, 1000),
 );
+
+bodySection.addEventListener('click', eve => {
+  if (eve.path[2].className === 'gallery-item') {
+    getImageCard(eve.target.id);
+  }
+  if (eve.target.classList.value === 'basicLightbox') {
+    bodySection.classList.toggle('modal-open');
+  }
+});
